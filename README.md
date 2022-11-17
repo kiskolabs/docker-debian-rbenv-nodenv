@@ -1,6 +1,6 @@
 # Docker Debian with rbenv and nodenv
 
-DockerHub: https://hub.docker.com/r/amkisko/debian-rbenv-nodenv
+Image: https://hub.docker.com/r/amkisko/debian-rbenv-nodenv
 
 ## Usage
 
