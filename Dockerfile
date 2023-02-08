@@ -4,7 +4,7 @@ RUN apt-get -q update \
     && DEBIAN_FRONTEND=noninteractive apt-get -q -y install bash git \
        curl wget openssl libpq-dev libssl-dev zlib1g-dev locales \
        build-essential poppler-utils imagemagick tzdata \
-       unzip gnupg jq less \
+       unzip gnupg jq less libyaml libyaml-dev \
     && apt-get -q clean \
     && rm -rf /var/lib/apt/lists /tmp/* /var/tmp/*
 
