@@ -4,7 +4,7 @@ RUN apt-get -q update \
     && DEBIAN_FRONTEND=noninteractive apt-get -q -y install bash git \
        curl wget openssl libpq-dev libssl-dev zlib1g-dev locales \
        build-essential poppler-utils imagemagick tzdata \
-       unzip gnupg jq less libyaml libyaml-dev \
+       unzip gnupg jq less libyaml-dev \
     && apt-get -q clean \
     && rm -rf /var/lib/apt/lists /tmp/* /var/tmp/*
 
@@ -28,7 +28,7 @@ RUN git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 RUN echo 'export PATH="~/.rbenv/bin:$PATH"; eval "$(rbenv init -)"' > /etc/profile.d/rbenv_init.sh
 RUN mkdir -p "$(rbenv root)"/plugins
 RUN git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
-RUN rbenv install 3.1.1
+RUN rbenv install 3.2.0
 
 WORKDIR /tmp/awscli
 COPY aws-cli.key .
