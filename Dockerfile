@@ -22,7 +22,7 @@ RUN echo 'export PATH="~/.nodenv/bin:$PATH"; eval "$(nodenv init -)"' > /etc/pro
 RUN mkdir -p "$(nodenv root)"/plugins
 RUN git clone https://github.com/nodenv/node-build.git "$(nodenv root)"/plugins/node-build
 RUN git clone https://github.com/nodenv/nodenv-aliases.git $(nodenv root)/plugins/nodenv-aliases
-RUN nodenv install 18.0.0
+RUN nodenv install 19.6.0
 
 RUN git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 RUN echo 'export PATH="~/.rbenv/bin:$PATH"; eval "$(rbenv init -)"' > /etc/profile.d/rbenv_init.sh
