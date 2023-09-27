@@ -22,13 +22,13 @@ RUN echo 'export PATH="~/.nodenv/bin:$PATH"; eval "$(nodenv init -)"' > /etc/pro
 RUN mkdir -p "$(nodenv root)"/plugins
 RUN git clone https://github.com/nodenv/node-build.git "$(nodenv root)"/plugins/node-build
 RUN git clone https://github.com/nodenv/nodenv-aliases.git $(nodenv root)/plugins/nodenv-aliases
-RUN nodenv install 19.6.0
+RUN nodenv install 18.17.1
 
 RUN git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 RUN echo 'export PATH="~/.rbenv/bin:$PATH"; eval "$(rbenv init -)"' > /etc/profile.d/rbenv_init.sh
 RUN mkdir -p "$(rbenv root)"/plugins
 RUN git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
-RUN rbenv install 3.2.0
+RUN rbenv install 3.2.2
 
 WORKDIR /tmp/awscli
 COPY aws-cli.key .
@@ -42,10 +42,10 @@ RUN gpg --import aws-cli.key && \
 
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-RUN apt-get -y update
+RUN apt-get update -y --allow-releaseinfo-change
 RUN apt-get install -y google-chrome-stable
 RUN echo "CHROME_BIN=/usr/bin/google-chrome" | tee -a /etc/environment
-RUN rm -f /etc/cron.daily/google-chrome /etc/apt/sources.list.d/google-chrome.list /etc/apt/sources.list.d/google-chrome.list.save
+RUN rm -f /etc/cron.daily/google-chrome /etc/apt/sources.list.d/google-chrome.list* /etc/apt/sources.list.d/google-chrome-unstable.list*
 
 RUN apt-get install -yqq unzip
 RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip

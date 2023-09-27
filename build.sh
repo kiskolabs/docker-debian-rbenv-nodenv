@@ -1,5 +1,5 @@
 #!/bin/bash
 
-docker build . --tag amkisko/debian-rbenv-nodenv
-docker push amkisko/debian-rbenv-nodenv:latest
+docker build . --tag kiskolabs/debian-rbenv-nodenv --no-cache
+docker push kiskolabs/debian-rbenv-nodenv:latest
 
